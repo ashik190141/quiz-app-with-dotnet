@@ -9,6 +9,7 @@ namespace QuizApp.Interfaces
         Task<Exam> CreateExamAsync(Exam exam);
         Task<IEnumerable<Exam>> GetAllExamAsync();
         Task<bool> GetExamExistAsync(string examName, string year);
+        Task<Exam?> GetExamByIdAsync(int id);
     }
 
     public interface IExamService

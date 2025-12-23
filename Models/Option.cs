@@ -11,6 +11,7 @@ namespace QuizApp.Models
         public required string Option2 { get; set; }
         public required string Option3 { get; set; }
         public required string Option4 { get; set; }
+        public required string CorrectAnswer { get; set; }
         public int CreatedBy { get; set; }
         [ForeignKey(nameof(CreatedBy))]
         public User CreatedByUser { get; set; } = null!;

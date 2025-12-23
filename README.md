@@ -1,5 +1,5 @@
-Authentication
-Authorization with role base
-Dataseeder
-Main basic folder structure
-Jwt token
+ - Authentication
+ - Authorization with role base
+ - Dataseeder
+ - Main basic folder structure
+ - Jwt token
