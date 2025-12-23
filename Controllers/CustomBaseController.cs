@@ -10,7 +10,7 @@ namespace QuizApp.Controllers
     {
         protected string? GetUserId()
         {
-            return User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+            return User.FindFirst(ClaimTypes.Sid)?.Value;
         }
 
         protected string? GetUserEmail()
@@ -32,6 +32,12 @@ namespace QuizApp.Controllers
         {
             var roleId = GetUserRole();
             return roleId == (int)Roles.SuperAdmin;
+        }
+
+        protected bool IsTeacher()
+        {
+            var roleId = GetUserRole();
+            return roleId == (int)Roles.Teacher;
         }
 
         protected string? GetJwtToken()

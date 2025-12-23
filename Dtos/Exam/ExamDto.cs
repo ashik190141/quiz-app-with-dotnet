@@ -3,10 +3,10 @@ using QuizApp.Models;
 
 namespace QuizApp.Dtos;
 
-public class ExamDto
+public class CreateExamDto
 {
     [Required]
-    [Range(5,50,ErrorMessage ="Exam name must be in 5-50 words")]
+    [StringLength(50, MinimumLength = 5, ErrorMessage = "Exam name must be 5-50 characters")]
     public required string Name { get; set; }
     [Required]
     [MinLength(4, ErrorMessage = "Exam year must be in 4 digits")]

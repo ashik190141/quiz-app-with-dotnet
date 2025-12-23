@@ -15,7 +15,7 @@ namespace QuizApp.Models
         public required string Year { get; set; }
         [Required]
         public required Month Month { get; set; }
-        public required int Duration { get; set; }
+        public required string Duration { get; set; }
         public required int NumberOfQuestions { get; set; }
         [Required]
         public required DateTime StartTime { get; set; }
