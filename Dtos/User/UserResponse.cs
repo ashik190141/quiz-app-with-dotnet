@@ -12,7 +12,13 @@ public class CreateUserResponse
     public required DateTime UpdatedAt { get; set; }
 }
 
+public class RoleResponse
+{
+    public required int Id { get; set; }
+    public required string Name { get; set; }
+}
+
 public class GetAllUserResponse : CreateUserResponse
 {
-    public required Role Role { get; set; }
+    public required RoleResponse Role { get; set; }
 }

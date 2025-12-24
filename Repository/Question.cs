@@ -20,14 +20,21 @@ public class QuestionRepository(QuizContext context) : BaseRepository(context), 
         return questions.Count;
     }
 
-    public async Task<IEnumerable<Questions>> GetQuestionsByExamIdAsync(int id)
+    public async Task<IEnumerable<Questions>> GetQuestionsByExamIdAsync(int id, int roleId)
     {
-        var questions = await _context.Questions.Where(x => x.ExamId == id)
-        .Include(x => x.Exam)
-        .ThenInclude(x => x.CreatedByUser)
-        .ThenInclude(x => x.Role)
-        .Include(x => x.Option)
-        .ToListAsync();
-        return questions;
+        var query = _context.Questions
+        .Where(q => q.ExamId == id)
+        .Include(q => q.Exam)
+            .ThenInclude(e => e.CreatedByUser)
+                .ThenInclude(u => u.Role)
+        .Include(q => q.Option)
+        .AsQueryable();
+
+        if (roleId == (int)Roles.Student)
+        {
+            query = query.OrderBy(q => EF.Functions.Random());
+        }
+
+        return await query.ToListAsync();
     }
 }

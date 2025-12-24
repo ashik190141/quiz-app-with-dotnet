@@ -18,4 +18,9 @@ public class UserRepository(QuizContext context) : BaseRepository(context), IUse
     {
         return await _context.Users.Include(u => u.Role).ToListAsync();
     }
+
+    public async Task<User?> GetUserByIdAsync(int id)
+    {
+        return await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == id);
+    }
 }
